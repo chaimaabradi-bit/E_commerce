@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Catalogue{% endblock %}
+
+{% block body %}
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">Bienvenue sur MyShop</h1>
+    <p class="col-md-8 fs-4">
+      Découvrez notre catalogue de produits en ligne.
+    </p>
+    <a href="{{ path('app_home') }}" class="btn btn-primary btn-lg">Voir le catalogue</a>
+  </div>
+</div>
+
+
+<div class="row">
+  {% for product in arrayResponse %}
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+
+        {# boucle sur toutes les images du produit #}
+        {% for image in product.images %}
+          <img src="{{ image }}" class="card-img-top" alt="{{ product.title }}">
+        {% endfor %}
+
+        <div class="card-body">
+          <h5 class="card-title">{{ product.title }}</h5>
+          <p class="card-text">{{ product.description }}</p>
+          <a href="#" class="btn btn-outline-primary">Voir</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+
+{% endblock %}
